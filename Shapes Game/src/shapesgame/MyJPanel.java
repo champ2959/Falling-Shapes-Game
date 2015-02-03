@@ -5,6 +5,7 @@
  */
 package shapesgame;
 
+import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 /**
@@ -21,10 +22,16 @@ public class MyJPanel extends JPanel {
         
         super();
         
+        setLayout(new BorderLayout());
+        
         mjp1 = new MyJPanel1();
         mjp2 = new MyJPanel2();
         mjp3 = new MyJPanel3();
         
+        
+        this.add(mjp1, "North");
+        
+        this.add(mjp2, "South");
             
         
         
