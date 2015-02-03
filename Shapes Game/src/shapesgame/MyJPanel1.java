@@ -17,6 +17,10 @@ import javax.swing.JPanel;
 public class MyJPanel1 extends JPanel implements ActionListener {
     
     JButton start, exit;
+    MyJPanel1 mjp1;
+    MyJPanel2 mjp2;
+    MyJPanel mjp;
+
     
     public MyJPanel1() {
         
@@ -36,8 +40,7 @@ public class MyJPanel1 extends JPanel implements ActionListener {
             Object obj = e.getSource();
             
             if (obj == start) {
-                
-                
+               
             }
             else if (obj == exit) {
                 
