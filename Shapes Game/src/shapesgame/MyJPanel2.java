@@ -7,6 +7,7 @@ package shapesgame;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Hashtable;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -25,12 +26,25 @@ public class MyJPanel2 extends JPanel implements ActionListener {
     public MyJPanel2() {
         
         super();
-        speed = new JSlider();
+        speed = new JSlider(JSlider.HORIZONTAL, 0, 2, 1);
         
         color = new JButton("Color");
         
         speedLabel = new JLabel("Speed: ");
         
+        //Create the label table
+        Hashtable labelTable = new Hashtable();
+        labelTable.put(0, new JLabel("Slowest") );
+        labelTable.put(1, new JLabel("Medium") );
+        labelTable.put(2, new JLabel("Fast") );
+        
+        speed.setLabelTable(labelTable);
+        speed.setMinorTickSpacing(2);
+        speed.setMajorTickSpacing(1);
+        speed.setPaintTicks(true);
+        speed.setPaintLabels(true);
+
+
         this.add(speedLabel);
         this.add(speed);
         this.add(color);
@@ -41,6 +55,14 @@ public class MyJPanel2 extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+       Object obj = e.getSource();
+    
+       if (obj == speed) {
+           
+           MyJPanel3 mjp3;
+    
+           
+       }
     }
     
 }
