@@ -11,4 +11,12 @@ package shapesgame;
  */
 public class App {
     
+    MyJFrame mjf;
+    
+    public static void main(String args[]) {
+        
+        mjf = new MyJFrame();
+        
+    }
+    
 }
