@@ -19,19 +19,21 @@ public class MyJPanel3 extends JPanel implements ActionListener {
     
     JButton b1, b2, b3, b4;
     Timer tim;
+    int i = 0;
+    int delay = 1000;
     
     public MyJPanel3() {
     
         super();
         
-        int delay = 0;
+        
         int limit = 0;
-        int i = 0;
         
         
         tim = new Timer(delay, this);
         
         b1 = new JButton("B1");
+        add(b1);
         b2 = new JButton("B2");
         b3 = new JButton("b3");
         b4 = new JButton("B4");
@@ -42,11 +44,12 @@ public class MyJPanel3 extends JPanel implements ActionListener {
         
     
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
 
         Object obj = e.getSource();
+        
         
         
     

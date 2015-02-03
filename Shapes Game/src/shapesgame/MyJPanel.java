@@ -22,6 +22,7 @@ public class MyJPanel extends JPanel implements ActionListener, ChangeListener {
     MyJPanel1 mjp1;
     MyJPanel2 mjp2;
     MyJPanel3 mjp3;
+    boolean gameStarted = false;
     
     public MyJPanel() {
         
@@ -35,7 +36,7 @@ public class MyJPanel extends JPanel implements ActionListener, ChangeListener {
         
         
         this.add(mjp1, "North");
-        
+        this.add(mjp3, "Center");
         this.add(mjp2, "South");
         
         mjp1.start.addActionListener(this);
@@ -43,23 +44,40 @@ public class MyJPanel extends JPanel implements ActionListener, ChangeListener {
         mjp2.speed.addChangeListener(this);
         mjp2.color.addActionListener(this);
         
+        mjp3.tim.addActionListener(this);
+        
         
     }
 
+    public String toString(int i) {
+        
+        String a = "";
+        a += i;
+        return a;
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         
         Object obj = e.getSource();
         if (obj == mjp1.start) {
             
+            gameStarted = true;
             mjp2.changeColor();
+            mjp3.tim.start();
         }
-         if (obj == mjp2.color) {
+        else if (obj == mjp2.color) {
             
            mjp2.changeColor();
             
         }
-        
+        else if (obj == mjp3.tim) {
+            
+            mjp3.i = mjp3.i + 1;
+                      
+            mjp3.b1.setText( this.toString(mjp3.i));
+            
+        }
     }
 
     @Override
@@ -67,12 +85,26 @@ public class MyJPanel extends JPanel implements ActionListener, ChangeListener {
         
         Object obj = e.getSource();
         
-        if (obj == mjp2.speed && !mjp2.speed.getValueIsAdjusting()) {
+        if (obj == mjp2.speed && !mjp2.speed.getValueIsAdjusting() && gameStarted == true) {
             
            int newSpeed = mjp2.speed.getValue();
            
            mjp2.setSpeed(newSpeed);
+           
+           mjp3.tim.stop();
+           if (newSpeed == 1) {
+               mjp3.tim.setDelay(1000);
+           }
+           else if (newSpeed == 2) {
+
+               mjp3.tim.setDelay(600);
             
+           }
+           else if (newSpeed == 3) {
+              mjp3.tim.setDelay(300);
+           }
+           
+           mjp3.tim.start();
         }
     
     }
