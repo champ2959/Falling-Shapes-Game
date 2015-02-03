@@ -42,8 +42,7 @@ public class MyJPanel1 extends JPanel implements ActionListener {
             if (obj == start) {
                
             }
-            else if (obj == exit) {
-                
+            else if (obj == exit) {               
                 
             }
     }
