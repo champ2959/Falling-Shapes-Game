@@ -5,6 +5,7 @@
  */
 package shapesgame;
 
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -35,13 +36,13 @@ public class MyJPanel3 extends JPanel implements ActionListener {
         b1 = new JButton("B1");
         add(b1);
         b2 = new JButton("B2");
+        b2.setText("Your Score: "+ i);
+        b2.setBounds(new Rectangle (400, 0, 200, 100));
+        add(b2);
         b3 = new JButton("b3");
         b4 = new JButton("B4");
         
-        
-        
-        
-        
+      
     
     }
     
