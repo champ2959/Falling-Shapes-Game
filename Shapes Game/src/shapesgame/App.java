@@ -10,12 +10,10 @@ package shapesgame;
  * @author emg5478
  */
 public class App {
-    
-    MyJFrame mjf;
-    
+        
     public static void main(String args[]) {
         
-        mjf = new MyJFrame();
+        MyJFrame mjf = new MyJFrame();
         
     }
     

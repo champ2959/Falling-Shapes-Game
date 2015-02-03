@@ -5,10 +5,29 @@
  */
 package shapesgame;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author emg5478
  */
-public class MyJFrame {
+public class MyJFrame extends JFrame {
+    
+    MyJPanel mjp;
+    
+    public MyJFrame() {
+    
+        super("Falling Shapes Game");
+       
+        mjp = new MyJPanel();
+    
+        this.getContentPane().add(mjp, "Center");
+        
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setSize (1000, 800);
+        this.setVisible(true);
+        
+        
+    }
     
 }

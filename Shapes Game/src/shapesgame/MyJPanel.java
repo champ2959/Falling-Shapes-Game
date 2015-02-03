@@ -19,6 +19,8 @@ public class MyJPanel extends JPanel {
     
     public MyJPanel() {
         
+        super();
+        
         mjp1 = new MyJPanel1();
         mjp2 = new MyJPanel2();
         mjp3 = new MyJPanel3();
