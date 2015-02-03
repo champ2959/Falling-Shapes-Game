@@ -4,26 +4,44 @@
  * and open the template in the editor.
  */
 package shapesgame;
-import java.awt.*;
-import javax.swing.*;
-import java.awt.event.*;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
 /**
  *
  * @author emg5478
  */
 public class MyJPanel1 extends JPanel implements ActionListener {
     
-    public MyJPanel1 () {
-        
-        JButton start = new JButton ();
-        start.addActionListener(this);  
-        add(start);
-        JButton exit = new JButton ();
-        exit.addActionListener(this);
-        add(exit);
-    }
-    public void actionPerformed(ActionEvent colors){
-        
-    }
+    JButton start, exit;
     
+    public MyJPanel1() {
+        
+        super();
+        
+        start = new JButton("Start Game");
+        exit = new JButton("Exit Game");
+        
+        this.add(start);
+        this.add(exit);
+    
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    
+            Object obj = e.getSource();
+            
+            if (obj == start) {
+                
+                
+            }
+            else if (obj == exit) {
+                
+                
+            }
+    }
 }
