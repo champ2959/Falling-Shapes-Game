@@ -9,10 +9,12 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Hashtable;
+import javafx.scene.layout.Border;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
+import javax.swing.border.LineBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -61,10 +63,27 @@ public class MyJPanel2 extends JPanel {
     }
     
     public void changeScore(int i) {
-
+        
+        String str = "";
+        
         scoreCount = scoreCount + i;
-        String str = "Score: " + scoreCount;
+        
+        if (scoreCount > 10) {
+        
+            str = "You Won!";
+            
+        }
+        else if (scoreCount < -1) {
+            
+            str = "Game Over. You Lost!";
+            
+        }
+        else {
+            
+            str = "Score: " + scoreCount;
  
+        }
+        
         score.setText(str);
     }
     
@@ -87,6 +106,7 @@ public class MyJPanel2 extends JPanel {
         int i = (int) (10 * Math.random());
         
         Color c = Color.red;
+        
         
         switch(i) {
             
@@ -114,6 +134,8 @@ public class MyJPanel2 extends JPanel {
                 break;
             
         }
+        
+        LineBorder b = new LineBorder(c, 3);
         
         this.currentColor = c;
         color.setBackground(c);

@@ -6,10 +6,12 @@
 package shapesgame;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -20,9 +22,11 @@ import javax.swing.Timer;
 public class MyJPanel3 extends JPanel implements ActionListener {
     
     JButton b1, b2, b3, b4;
+    JLabel paused;
     Timer tim;
     int i = 0;
-    int delay = 500;
+    int delay = 10;
+    int yJump = 5;
     
     public MyJPanel3() {
     
@@ -31,34 +35,36 @@ public class MyJPanel3 extends JPanel implements ActionListener {
         setLayout(null);
         int limit = 0;
         
-        
+        this.setBackground(Color.WHITE);
         tim = new Timer(delay, this);
         
         b1 = new JButton("");
-        b1.setBounds((int)(Math.random() * (950)), -60, 120, 30);
+        b1.setBounds((int)(Math.random() * (400)), -60, 120, 60);
 
         
         b2 = new JButton("");
         b2.setText("");
-        b2.setBounds((int) (Math.random() * 900), -150, 120, 30);
+        b2.setBounds((int) (Math.random() * 500), -150, 120, 60);
         
         b3 = new JButton("");
-        b3.setBounds((int) (Math.random() * 900), -90, 120, 30);
+        b3.setBounds((int) (Math.random() * 600), -100, 120, 60);
 
         b4 = new JButton("");
-        b4.setBounds((int) (Math.random() * 900), -30, 120, 30);
+        b4.setBounds((int) (Math.random() * 900), -200, 120, 60);
+        
+        paused = new JLabel("Click Start Game to Play");
+        paused.setFont(new Font("Verdana", Font.BOLD, 24));
+        paused.setBounds(new Rectangle(300, 0, 600, 600));
+        
         add(b1);
         add(b2);
         add(b3);
         add(b4);
-    
+        add(paused);
     }
     
     public void move() {
-    
-        int yJump = (800/10);
-        
-        
+                
         int b1X = b1.getX();
         int b1Y =(b1.getY() + yJump);
         int b2X = b2.getX();
@@ -68,29 +74,32 @@ public class MyJPanel3 extends JPanel implements ActionListener {
         int b4X = b4.getX();
         int b4Y =(b4.getY() + yJump);
         
-        if (b1Y > 700) {
-            
-            b1X = (int)((Math.random() * 10) * (100));
-            b1Y = (int) (Math.random() * (20));
+        int randomX = (int) (Math.random() * 10);
+        int randomY = (int) (0 - (Math.random() * 5));
+        
+        if (b1Y > 720) {
+            System.out.println(randomY);
+            b1X = randomX * 98;
+            b1Y = randomY * 100;
                  
         }
-        if (b2Y > 700) {
-             b2X = (int) ((Math.random() * 10) * (100));
-             b2Y = (int) (Math.random() * 2);
+        if (b2Y > 704) {
+             b2X = randomX * 94;
+             b2Y = randomY * 90;
         }
-        if (b3Y > 700) {
-            b3X = (int) ((Math.random() * 10) * (100));
-            b3Y = (int) (Math.random() * 5);
+        if (b3Y > 704) {
+            b3X = randomX * 94;
+            b3Y = randomY * 80;
         }
-        if (b4Y > 700) {
-            b4X = (int) ((Math.random() * 10) * (100));
-            b4Y = (int) (Math.random() * 15);
+        if (b4Y > 704) {
+            b4X = randomX * 92;
+            b4Y = randomY * 60;
         }
         
-        b1.setBounds(b1X, b1Y, 120, 30);
-        b2.setBounds(b2X, b2Y, 120, 30);
-        b3.setBounds(b3X, b3Y, 120, 30);
-        b4.setBounds(b4X, b4Y, 120, 30);
+        b1.setBounds(b1X, b1Y, 120, 50);
+        b2.setBounds(b2X, b2Y, 120, 50);
+        b3.setBounds(b3X, b3Y, 120, 50);
+        b4.setBounds(b4X, b4Y, 120, 50);
             
     }
     public void changeBadButtons(Color badColor, String b) {

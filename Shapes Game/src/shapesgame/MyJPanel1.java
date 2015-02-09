@@ -5,10 +5,13 @@
  */
 package shapesgame;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -26,8 +29,21 @@ public class MyJPanel1 extends JPanel implements ActionListener {
         
         super();
         
+        Font f = new Font("Verdana", Font.PLAIN, 14);
+        
         start = new JButton("Start Game");
-        exit = new JButton("Exit Game");
+        start.setSize(100, 20);
+        start.setBackground(Color.GRAY);
+        start.setBorder(new LineBorder(Color.GRAY, 10));
+        start.setFont(f);
+        start.setForeground(Color.WHITE);
+        
+        exit = new JButton("Pause Game");
+        exit.setSize(100, 20);
+        exit.setBackground(Color.GRAY);
+        exit.setBorder(new LineBorder(Color.GRAY, 10));
+        exit.setFont(f);
+        exit.setForeground(Color.WHITE);
         
         this.add(start);
         this.add(exit);
