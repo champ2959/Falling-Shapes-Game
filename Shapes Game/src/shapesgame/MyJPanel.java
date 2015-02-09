@@ -39,14 +39,15 @@ public class MyJPanel extends JPanel implements ActionListener, ChangeListener {
         this.add(mjp3, "Center");
         this.add(mjp2, "South");
         
+       
         mjp1.start.addActionListener(this);
+        mjp1.exit.addActionListener(this);
         
         mjp2.speed.addChangeListener(this);
         mjp2.color.addActionListener(this);
         
         mjp3.tim.addActionListener(this);
-        
-        
+        mjp3.b1.addActionListener(this);
     }
 
     public String toString(int i) {
@@ -64,18 +65,44 @@ public class MyJPanel extends JPanel implements ActionListener, ChangeListener {
             
             gameStarted = true;
             mjp2.changeColor();
+            mjp3.b1.setBackground(mjp2.currentColor);
             mjp3.tim.start();
+        }
+        else if (obj == mjp1.exit) {
+            
+            mjp3.tim.stop();
+            gameStarted = false;
+            
         }
         else if (obj == mjp2.color) {
             
            mjp2.changeColor();
+           mjp3.b1.setBackground(mjp2.currentColor);
             
         }
         else if (obj == mjp3.tim) {
             
             mjp3.i = mjp3.i + 1;
-                      
-            mjp3.b1.setText( this.toString(mjp3.i));
+            mjp3.move();  
+            
+        }
+        else if (obj == mjp3.b1) {
+
+            mjp2.changeScore(1);
+            mjp2.changeColor();
+            mjp3.b1.setBackground(mjp2.currentColor);
+            mjp3.changeBadButtons(mjp2.currentColor, "b2");
+            mjp3.changeBadButtons(mjp2.currentColor, "b3");
+            mjp3.changeBadButtons(mjp2.currentColor, "b4");
+            
+        }
+        else if (obj == mjp3.b2 || obj == mjp3.b3 || obj == mjp3.b4) {
+            
+            mjp2.changeScore(-1);
+            mjp2.changeColor();
+            
+            mjp3.changeBadButtons(mjp2.currentColor, "b2");
+           
             
         }
     }
@@ -92,21 +119,24 @@ public class MyJPanel extends JPanel implements ActionListener, ChangeListener {
            mjp2.setSpeed(newSpeed);
            
            mjp3.tim.stop();
+           
            if (newSpeed == 1) {
-               mjp3.tim.setDelay(1000);
+          
+               mjp3.tim.setDelay(600);
+           
            }
            else if (newSpeed == 2) {
 
-               mjp3.tim.setDelay(600);
+               mjp3.tim.setDelay(500);
             
            }
            else if (newSpeed == 3) {
-              mjp3.tim.setDelay(300);
+              mjp3.tim.setDelay(350);
            }
            
            mjp3.tim.start();
         }
-    
+            
     }
     
 }

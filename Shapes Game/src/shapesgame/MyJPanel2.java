@@ -25,15 +25,20 @@ public class MyJPanel2 extends JPanel {
     JSlider speed;
     JButton color;
     JLabel speedLabel;
+    JLabel score;
+    int scoreCount = 0;
+    Color currentColor;
     
     public MyJPanel2() {
         
         super();
         speed = new JSlider(JSlider.HORIZONTAL, 1, 3, 2);
         
-        color = new JButton("Color");
+        color = new JButton("Click the button that is this Color");
         
         speedLabel = new JLabel("Speed: ");
+        
+        score = new JLabel("Score: " + scoreCount);
         
         //Create the label table
         Hashtable labelTable = new Hashtable();
@@ -51,7 +56,16 @@ public class MyJPanel2 extends JPanel {
         this.add(speedLabel);
         this.add(speed);
         this.add(color);
+        this.add(score);
+            
+    }
     
+    public void changeScore(int i) {
+
+        scoreCount = scoreCount + i;
+        String str = "Score: " + scoreCount;
+ 
+        score.setText(str);
     }
     
     public void setSpeed(int s) {
@@ -59,6 +73,14 @@ public class MyJPanel2 extends JPanel {
         speed.setValue(s);
     
     }
+    
+    public int getSpeed() {
+        
+        return speed.getValue();
+        
+    }
+    
+    
     
     public void changeColor() {
         
@@ -93,6 +115,7 @@ public class MyJPanel2 extends JPanel {
             
         }
         
+        this.currentColor = c;
         color.setBackground(c);
     }
 
